@@ -33,3 +33,5 @@ After cloning this repo, run `npm ci` once and then `node index.js` everytime th
 Now navigate to `http://localhost:3000/hello` in your browser to see the result.
 
 It is also now possible to run the server using `npm run start` after making a single line adjustment in package.json. See commit 2.
+
+3rd commit: Run `npm run dev` to run the code using nodemon, so that when any change is done to `index.js` then the node app is restarted.
