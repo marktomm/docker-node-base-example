@@ -31,3 +31,5 @@ The `npm ci` command is designed for continuous integration environments and, wh
 After cloning this repo, run `npm ci` once and then `node index.js` everytime the project node app needs to be run. Node v20 was using during development by author.
 
 Now navigate to `http://localhost:3000/hello` in your browser to see the result.
+
+It is also now possible to run the server using `npm run start` after making a single line adjustment in package.json. See commit 2.
