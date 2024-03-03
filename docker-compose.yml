@@ -8,3 +8,26 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
+    networks:
+      - project_docker_node
+    depends_on:
+      - db
+    restart: "no"
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: project_docker_node
+      POSTGRES_USER: project_docker_node
+      POSTGRES_DB: project_docker_node
+    volumes:
+      - ./db/prod/volume:/var/lib/postgresql/data
+      - ./db/prod/conf/postgresql/my-postgres.conf:/etc/postgresql/postgresql.conf
+    ports:
+      - 5432:5432
+    networks:
+      - project_docker_node
+    restart: "no"
+
+networks:
+  project_docker_node:
