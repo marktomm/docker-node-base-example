@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blocking Request Example</title>
+    <style>
+      .highlight-text {
+        background-color: yellow;
+        transition: background-color 2s linear;
+        animation: highlight 2s linear infinite;
+      }
+
+      @keyframes highlight {
+        0% {
+          background-color: yellow;
+        }
+        50% {
+          background-color: white;
+        }
+        100% {
+          background-color: yellow;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p class="highlight-text">This is some text to highlight</p>
+    <!-- <img src="donut.gif" alt="Donut Image"> -->
+    <button onclick="makePromiseRequest()">Make Request</button>
+    <script>
+      function makePromiseRequest() {
+        const myPromise = new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+              if (this.status === 200) {
+                resolve(xhr.responseText); // Resolve the Promise with the response text
+              } else {
+                reject(new Error(`Error: ${xhr.status} ${xhr.statusText}`)); // Reject the Promise with an error
+              }
+            }
+          };
+          xhr.open("GET", "http://localhost:3000/exampleEndpoint", true);
+          xhr.send();
+        });
+
+        // Usage of the Promise
+        myPromise
+          .then((responseText) => {
+            console.log("Response:", responseText);
+          })
+          .catch((error) => {
+            console.error(error.message);
+          });
+      }
+
+      // Make the blocking request when the page loads
+      // makePromiseRequest();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blocking Request Example</title>
+    <style>
+      .highlight-text {
+        background-color: yellow;
+        transition: background-color 2s linear;
+        animation: highlight 2s linear infinite;
+      }
+
+      @keyframes highlight {
+        0% {
+          background-color: yellow;
+        }
+        50% {
+          background-color: white;
+        }
+        100% {
+          background-color: yellow;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p class="highlight-text">This is some text to highlight</p>
+    <!-- <img src="donut.gif" alt="Donut Image"> -->
+    <button onclick="makeBlockingRequest()">Make Request</button>
+    <script>
+      function makeBlockingRequest() {
+        var xhr = new XMLHttpRequest();
+
+        // Configure the requ   est
+        xhr.open("GET", "http://localhost:3000/exampleEndpoint", false); // false makes the request synchronous
+
+        // Send the request
+        xhr.send(); // We stop and wait here until there is a response
+
+        // Check the status and process the response
+        if (xhr.status === 200) {
+          console.log("Response:", xhr.responseText);
+        } else {
+          console.error("Error:", xhr.status, xhr.statusText);
+        }
+      }
+
+      // Make the blocking request when the page loads
+      // makeBlockingRequest();
+    </script>
+  </body>
+</html>
