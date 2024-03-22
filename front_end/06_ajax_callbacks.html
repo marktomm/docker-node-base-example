@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blocking Request Example</title>
+    <style>
+      .highlight-text {
+        background-color: yellow;
+        transition: background-color 2s linear;
+        animation: highlight 2s linear infinite;
+      }
+
+      @keyframes highlight {
+        0% {
+          background-color: yellow;
+        }
+        50% {
+          background-color: white;
+        }
+        100% {
+          background-color: yellow;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <p class="highlight-text">This is some text to highlight</p>
+    <button onclick="makeBlockingRequest()">Make Request</button>
+    <div id="user-info"></div>
+    <div id="user-posts"></div>
+    <div id="post-comments"></div>
+    <script>
+      // Function to make an XMLHttpRequest to load user data
+      function loadUserData(callback) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:3000/api/user", true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              const userData = JSON.parse(xhr.responseText);
+              callback(userData);
+            } else {
+              console.error("Error loading user data:", xhr.statusText);
+            }
+          }
+        };
+        xhr.onerror = function () {
+          console.error("Error loading user data:", xhr.statusText);
+        };
+        xhr.send();
+      }
+
+      // Function to make an XMLHttpRequest to load user posts
+      function loadUserPosts(userId, callback) {
+        const xhr = new XMLHttpRequest();
+        xhr.open(
+          "GET",
+          "http://localhost:3000/api/posts?userId=" + userId,
+          true
+        );
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              const userPosts = JSON.parse(xhr.responseText);
+              callback(userPosts);
+            } else {
+              console.error("Error loading user posts:", xhr.statusText);
+            }
+          }
+        };
+        xhr.onerror = function () {
+          console.error("Error loading user posts:", xhr.statusText);
+        };
+        xhr.send();
+      }
+
+      // Function to make an XMLHttpRequest to load post comments
+      function loadPostComments(postId, callback) {
+        const xhr = new XMLHttpRequest();
+        xhr.open(
+          "GET",
+          "http://localhost:3000/api/comments?postId=" + postId,
+          true
+        );
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              const postComments = JSON.parse(xhr.responseText);
+              callback(postComments);
+            } else {
+              console.error("Error loading post comments:", xhr.statusText);
+            }
+          }
+        };
+        xhr.onerror = function () {
+          console.error("Error loading post comments:", xhr.statusText);
+        };
+        xhr.send();
+      }
+
+      function makeBlockingRequest() {
+        // Example usage: Load user data, then load user posts, then load comments for the first post
+        loadUserData(function (userData) {
+          console.log("User data loaded:", userData);
+          // Update HTML with user data
+          document.getElementById(
+            "user-info"
+          ).innerHTML = `<p>User ID: ${userData.id}</p><p>Name: ${userData.name}</p>`;
+
+          loadUserPosts(userData.id, function (userPosts) {
+            console.log("User posts loaded:", userPosts);
+            // Update HTML with user posts
+            const postsList = userPosts
+              .map((post) => `<li>${post.title}</li>`)
+              .join("");
+            document.getElementById(
+              "user-posts"
+            ).innerHTML = `<ul>${postsList}</ul>`;
+
+            const firstPostId = userPosts[0].id;
+            loadPostComments(firstPostId, function (postComments) {
+              console.log("Comments for first post loaded:", postComments);
+              // Update HTML with post comments
+              const commentsList = postComments
+                .map((comment) => `<li>${comment.text}</li>`)
+                .join("");
+              document.getElementById(
+                "post-comments"
+              ).innerHTML = `<ul>${commentsList}</ul>`;
+            });
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

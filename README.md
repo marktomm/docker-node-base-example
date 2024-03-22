@@ -36,4 +36,12 @@ It is also now possible to run the server using `npm run start` after making a s
 
 3rd commit: Run `npm run dev` to run the code using nodemon, so that when any change is done to `index.js` then the node app is restarted.
 
-4th commit: Run `docker compose up` to run code inside docker container.
+4th commit: Run `docker compose up` to run code inside **docker** container.
+
+5th commit: add **postgresql** db to docker
+
+6th commit: separate commit for `package-lock.json`
+
+7th commit: added `front_end` dir with html files to demonstrate event loop in web browser. See `front_end/README.md`
+
+8th commit: move node + postgre async await example to `index_01.js`. Modify the js file to be more real world example. Add `front_end/06_ajax_callbacks.html` showing multiple nested callbacks (so-called callbakc hell) on frontend.
