@@ -45,3 +45,5 @@ It is also now possible to run the server using `npm run start` after making a s
 7th commit: added `front_end` dir with html files to demonstrate event loop in web browser. See `front_end/README.md`
 
 8th commit: move node + postgre async await example to `index_01.js`. Modify the js file to be more real world example. Add `front_end/06_ajax_callbacks.html` showing multiple nested callbacks (so-called callbakc hell) on frontend.
+
+9th commit: add `front_end/07_promiseChain.html`, `front_end/08_promiseAwait.html`, `front_end/09_fetchPromiseChain.html` and `front_end/10_fecthPromiseAwait.html`
