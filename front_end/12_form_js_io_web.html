@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello</title>
+  </head>
+  <body>
+    <h1>Biggest title</h1>
+    <p id="some_unique_id">text</p>
+    <p>Some other text</p>
+    <p id="the_time"></p>
+
+    <form>
+      <label>First Name:</label>
+      <input type="text" name="firstname" />
+      <button type="submit">Send To Js</button>
+    </form>
+
+    <script>
+      let form = document.querySelector("form");
+      form.onsubmit = function () {
+        let userInput = document.querySelector("[name=firstname]");
+        alert(userInput.value);
+      };
+
+      let a = 10;
+      let b = 5;
+      let result = a + b;
+
+      let myp = document.getElementById("some_unique_id");
+      myp.innerHTML = result;
+
+      //   alert("Hello world! The result is " + result);
+
+      console.log("Hello! But a little bit hidden");
+
+      let myptime = document.getElementById("the_time");
+      myptime.innerHTML = Date();
+    </script>
+  </body>
+</html>
