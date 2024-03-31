@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page title</title>
+    <script>
+      function validateForm() {
+        var personName = document.getElementById("some_unique_id").value;
+        if (personName.trim() == "") {
+          var errorMessage = document.createElement("p");
+          errorMessage.textContent = "Name cannot be empty";
+          errorMessage.style.color = "red";
+          document.getElementById("nameError").innerHTML = "";
+          document.getElementById("nameError").appendChild(errorMessage);
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <form
+      action="http://localhost:3000/post_name"
+      method="post"
+      onsubmit="return validateForm()"
+    >
+      <label for="person_name">Name:</label>
+      <br />
+      <input type="text" id="some_unique_id" name="person_name" />
+      <div id="nameError"></div>
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
