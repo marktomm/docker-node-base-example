@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>Hello</title>
@@ -16,9 +16,9 @@
     </form>
 
     <script>
-      let form = document.querySelector("form");
+      let form = document.querySelector('form');
       form.onsubmit = function () {
-        let userInput = document.querySelector("[name=firstname]");
+        let userInput = document.querySelector('[name=firstname]');
         alert(userInput.value);
       };
 
@@ -26,14 +26,14 @@
       let b = 5;
       let result = a + b;
 
-      let myp = document.getElementById("some_unique_id");
+      let myp = document.getElementById('some_unique_id');
       myp.innerHTML = result;
 
       //   alert("Hello world! The result is " + result);
 
-      console.log("Hello! But a little bit hidden");
+      console.log('Hello! But a little bit hidden');
 
-      let myptime = document.getElementById("the_time");
+      let myptime = document.getElementById('the_time');
       myptime.innerHTML = Date();
     </script>
   </body>

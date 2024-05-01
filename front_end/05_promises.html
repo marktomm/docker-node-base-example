@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -41,14 +41,14 @@
               }
             }
           };
-          xhr.open("GET", "http://localhost:3000/exampleEndpoint", true);
+          xhr.open('GET', 'http://localhost:3000/exampleEndpoint', true);
           xhr.send();
         });
 
         // Usage of the Promise
         myPromise
           .then((responseText) => {
-            console.log("Response:", responseText);
+            console.log('Response:', responseText);
           })
           .catch((error) => {
             console.error(error.message);

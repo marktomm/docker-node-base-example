@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <title>Page title</title>
     <script>
       function validateForm() {
-        var personName = document.getElementById("some_unique_id").value;
-        if (personName.trim() == "") {
-          var errorMessage = document.createElement("p");
-          errorMessage.textContent = "Name cannot be empty";
-          errorMessage.style.color = "red";
-          document.getElementById("nameError").innerHTML = "";
-          document.getElementById("nameError").appendChild(errorMessage);
+        var personName = document.getElementById('some_unique_id').value;
+        if (personName.trim() == '') {
+          var errorMessage = document.createElement('p');
+          errorMessage.textContent = 'Name cannot be empty';
+          errorMessage.style.color = 'red';
+          document.getElementById('nameError').innerHTML = '';
+          document.getElementById('nameError').appendChild(errorMessage);
           return false;
         }
         return true;

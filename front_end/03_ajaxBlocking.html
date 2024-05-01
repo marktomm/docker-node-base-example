@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -33,16 +33,16 @@
         var xhr = new XMLHttpRequest();
 
         // Configure the requ   est
-        xhr.open("GET", "http://localhost:3000/exampleEndpoint", false); // false makes the request synchronous
+        xhr.open('GET', 'http://localhost:3000/exampleEndpoint', false); // false makes the request synchronous
 
         // Send the request
         xhr.send(); // We stop and wait here until there is a response
 
         // Check the status and process the response
         if (xhr.status === 200) {
-          console.log("Response:", xhr.responseText);
+          console.log('Response:', xhr.responseText);
         } else {
-          console.error("Error:", xhr.status, xhr.statusText);
+          console.error('Error:', xhr.status, xhr.statusText);
         }
       }
 

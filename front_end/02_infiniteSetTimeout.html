@@ -1,41 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blocking Request Example</title>
     <style>
-        .highlight-text {
-            background-color: yellow;
-            transition: background-color 2s linear;
-            animation: highlight 2s linear infinite;
-        }
+      .highlight-text {
+        background-color: yellow;
+        transition: background-color 2s linear;
+        animation: highlight 2s linear infinite;
+      }
 
-        @keyframes highlight {
-            0% { background-color: yellow; }
-            50% { background-color: white; }
-            100% { background-color: yellow; }
+      @keyframes highlight {
+        0% {
+          background-color: yellow;
         }
+        50% {
+          background-color: white;
+        }
+        100% {
+          background-color: yellow;
+        }
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <p class="highlight-text">This is some text to highlight</p>
     <!-- <img src="donut.gif" alt="Donut Image"> -->
     <button onclick="makeTaskRequest()">Make Request</button>
-<script>
-    function makeTaskRequest() {
+    <script>
+      function makeTaskRequest() {
         const fn = () => {
-            console.log("This will be printer a lot");
-            setTimeout(fn, 0);
-        }
+          console.log('This will be printer a lot');
+          setTimeout(fn, 0);
+        };
 
         setTimeout(fn, 0);
-    }
+      }
 
-    // Make the task request when the page loads
-    // makeTaskRequest();
-</script>
-
-</body>
+      // Make the task request when the page loads
+      // makeTaskRequest();
+    </script>
+  </body>
 </html>

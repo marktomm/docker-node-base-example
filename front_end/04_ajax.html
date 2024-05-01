@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -35,16 +35,16 @@
         const fn2 = function () {
           if (this.readyState == 4) {
             if (this.status === 200) {
-              console.log("Response:", this.responseText);
+              console.log('Response:', this.responseText);
             } else {
-              console.error("Error:", this.status, this.statusText);
+              console.error('Error:', this.status, this.statusText);
             }
           }
         };
 
         xhr.onreadystatechange = fn2;
 
-        xhr.open("GET", "http://localhost:3000/exampleEndpoint");
+        xhr.open('GET', 'http://localhost:3000/exampleEndpoint');
         xhr.send();
       }
 

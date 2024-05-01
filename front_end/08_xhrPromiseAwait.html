@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -34,7 +34,7 @@
       function loadData(url) {
         return new Promise((resolve, reject) => {
           const xhr = new XMLHttpRequest();
-          xhr.open("GET", url, true);
+          xhr.open('GET', url, true);
           xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE) {
               if (xhr.status >= 200 && xhr.status < 300) {
@@ -52,7 +52,7 @@
       }
 
       function loadUserData() {
-        return loadData("http://localhost:3000/api/user");
+        return loadData('http://localhost:3000/api/user');
       }
 
       function loadUserPosts(userId) {
@@ -66,32 +66,29 @@
       async function makeBlockingRequest() {
         try {
           const userData = await loadUserData();
-          console.log("User data loaded:", userData);
+          console.log('User data loaded:', userData);
           // Update HTML with user data
-          document.getElementById(
-            "user-info"
-          ).innerHTML = `<p>User ID: ${userData.id}</p><p>Name: ${userData.name}</p>`;
+          document.getElementById('user-info').innerHTML =
+            `<p>User ID: ${userData.id}</p><p>Name: ${userData.name}</p>`;
 
           const userPosts = await loadUserPosts(userData.id);
-          console.log("User posts loaded:", userPosts);
+          console.log('User posts loaded:', userPosts);
           // Update HTML with user posts
           const postsList = userPosts
             .map((post) => `<li>${post.title}</li>`)
-            .join("");
-          document.getElementById(
-            "user-posts"
-          ).innerHTML = `<ul>${postsList}</ul>`;
+            .join('');
+          document.getElementById('user-posts').innerHTML =
+            `<ul>${postsList}</ul>`;
 
           const firstPostId = userPosts[0].id;
           const postComments = await loadPostComments(firstPostId);
-          console.log("Comments for first post loaded:", postComments);
+          console.log('Comments for first post loaded:', postComments);
           // Update HTML with post comments
           const commentsList = postComments
             .map((comment) => `<li>${comment.text}</li>`)
-            .join("");
-          document.getElementById(
-            "post-comments"
-          ).innerHTML = `<ul>${commentsList}</ul>`;
+            .join('');
+          document.getElementById('post-comments').innerHTML =
+            `<ul>${commentsList}</ul>`;
         } catch (error) {
           console.error(error);
         }
